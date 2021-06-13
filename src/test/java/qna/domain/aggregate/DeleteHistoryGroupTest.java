@@ -29,7 +29,7 @@ public class DeleteHistoryGroupTest {
 		//given
 
 		//when
-		DeleteHistoryGroup 삭제이력그룹 = DeleteHistoryGroup.generate();
+		DeleteHistoryGroup 삭제이력그룹 = new DeleteHistoryGroup(null);
 
 		//then
 		assertThat(삭제이력그룹).isNotNull();
@@ -62,7 +62,7 @@ public class DeleteHistoryGroupTest {
 	@Test
 	void 삭제이력그룹_이력_추가() {
 		//given
-		DeleteHistoryGroup 삭제이력그룹 = DeleteHistoryGroup.generate();
+		DeleteHistoryGroup 삭제이력그룹 = new DeleteHistoryGroup(null);
 		DeleteHistory 자바지기_답변_삭제_이력 = 자바지기_첫번째_답변.delete(자바지기);
 
 		//when
@@ -75,7 +75,7 @@ public class DeleteHistoryGroupTest {
 	@Test
 	void 삭제이력그룹_이력들_추가() {
 		//given
-		DeleteHistoryGroup 삭제이력그룹 = DeleteHistoryGroup.generate();
+		DeleteHistoryGroup 삭제이력그룹 = new DeleteHistoryGroup(null);
 		DeleteHistoryGroup 다른_삭제이력그룹 = 자바지기의_질문.delete(자바지기);
 
 		//when

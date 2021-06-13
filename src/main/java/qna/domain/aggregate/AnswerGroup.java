@@ -2,6 +2,7 @@ package qna.domain.aggregate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
@@ -39,11 +40,9 @@ public class AnswerGroup {
 	}
 
 	public DeleteHistoryGroup deleteAll(User loginUser) {
-		DeleteHistoryGroup deleteHistoryGroup = DeleteHistoryGroup.generate();
-		answers.stream()
+		return answers.stream()
 			.map(answer -> answer.delete(loginUser))
-			.forEach(deleteHistoryGroup::add);
-		return deleteHistoryGroup;
+			.collect(Collectors.collectingAndThen(Collectors.toList(), DeleteHistoryGroup::new));
 	}
 
 	public List<Answer> answers() {

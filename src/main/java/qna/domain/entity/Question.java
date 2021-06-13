@@ -98,9 +98,8 @@ public class Question extends BaseEntity {
 	}
 
 	public DeleteHistoryGroup delete(User loginUser) {
-		DeleteHistoryGroup deleteHistoryGroup = DeleteHistoryGroup.generate();
+		DeleteHistoryGroup deleteHistoryGroup = answerGroup.deleteAll(loginUser);
 		deleteHistoryGroup.add(deleteQuestion(loginUser));
-		deleteHistoryGroup.addAll(answerGroup.deleteAll(loginUser));
 		return deleteHistoryGroup;
 	}
 

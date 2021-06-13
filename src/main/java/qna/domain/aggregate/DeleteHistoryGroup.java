@@ -2,17 +2,19 @@ package qna.domain.aggregate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import qna.domain.entity.DeleteHistory;
 
 public class DeleteHistoryGroup {
 
-	private List<DeleteHistory> deleteHistories = new ArrayList<>();
+	private List<DeleteHistory> deleteHistories;
 
-	private DeleteHistoryGroup() {
-	}
-
-	public static DeleteHistoryGroup generate() {
-		return new DeleteHistoryGroup();
+	public DeleteHistoryGroup(List<DeleteHistory> deleteHistories) {
+		if (Objects.isNull(deleteHistories)) {
+			this.deleteHistories = new ArrayList<>();
+			return;
+		}
+		this.deleteHistories = deleteHistories;
 	}
 
 	public List<DeleteHistory> deleteHistories() {
